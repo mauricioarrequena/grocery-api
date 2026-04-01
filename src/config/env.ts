@@ -6,12 +6,13 @@ const requiredEnvVars = [
   "DB_NAME",
 ];
 
-requiredEnvVars.forEach((key) => {
-  if (!process.env[key]) {
-    throw new Error(`❌ Missing required environment variable: ${key}`);
+requiredEnvVars.forEach((emvKeyName) => {
+  if (!process.env[emvKeyName]) {
+    throw new Error(`ERROR: Missing required environment variable: ${emvKeyName}`);
   }
 });
 
+const port = Number(process.env.PORT);
 export const env = {
   DB_HOST: process.env.DB_HOST!,
   DB_PORT: Number(process.env.DB_PORT),
@@ -19,5 +20,5 @@ export const env = {
   DB_PASSWORD: process.env.DB_PASSWORD!,
   DB_NAME: process.env.DB_NAME!,
   NODE_ENV: process.env.NODE_ENV || "development",
-  PORT: Number(process.env.PORT) || 3000,
+  PORT: Number.isNaN(port) ? 3000 : port,
 };
