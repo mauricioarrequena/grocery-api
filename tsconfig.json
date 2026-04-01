@@ -11,6 +11,7 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "skipLibCheck": true,
+    "moduleResolution": "node",
     "types": ["node"]
   },
   "include": ["src"],
