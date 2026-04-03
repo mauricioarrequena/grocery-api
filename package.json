@@ -6,10 +6,13 @@
     "dev": "ts-node-dev --respawn --transpile-only -r dotenv/config src/server.ts",
     "build": "tsc",
     "start": "node dist/server.js",
+    "start:prod": "npm run build && npm run migration:run && npm run start",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
-    "seed": "ts-node src/seeders/category.seeder.ts"
+    "migration:run": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:run -d src/config/data-source.ts",
+    "migration:run:prod": "typeorm migration:run -d dist/config/data-source.js",
+    "seed": "ts-node -r dotenv/config src/seeders/category.seeder.ts"
   },
   "keywords": [],
   "author": "",
@@ -30,6 +33,7 @@
     "ts-jest": "^29.4.6",
     "ts-node": "^10.9.2",
     "ts-node-dev": "^2.0.0",
+    "tsconfig-paths": "^4.2.0",
     "typescript": "^5.9.3"
   }
 }
