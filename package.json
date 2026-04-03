@@ -1,17 +1,15 @@
 {
   "name": "grocery-api",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "dist/server.js",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development ts-node-dev --respawn --transpile-only src/server.ts",
+    "dev": "ts-node-dev --respawn --transpile-only -r dotenv/config src/server.ts",
     "build": "tsc",
     "start": "node dist/server.js",
-    "start:dev": "npm run dev",
-    "test": "cross-env NODE_ENV=test jest",
-    "test:watch": "cross-env NODE_ENV=test jest --watch",
-    "test:coverage": "cross-env NODE_ENV=test jest --coverage",
-    "seed": "cross-env NODE_ENV=development ts-node src/seeders/category.seeder.ts",
-    "seed:test": "cross-env NODE_ENV=test ts-node src/seeders/category.seeder.ts"
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "seed": "ts-node src/seeders/category.seeder.ts"
   },
   "keywords": [],
   "author": "",
@@ -28,7 +26,6 @@
   "devDependencies": {
     "@types/jest": "^30.0.0",
     "@types/node": "^25.4.0",
-    "cross-env": "^10.1.0",
     "jest": "^30.3.0",
     "ts-jest": "^29.4.6",
     "ts-node": "^10.9.2",
