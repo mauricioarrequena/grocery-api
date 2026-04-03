@@ -12,7 +12,8 @@
     "test:coverage": "jest --coverage",
     "migration:run": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:run -d src/config/data-source.ts",
     "migration:run:prod": "typeorm migration:run -d dist/config/data-source.js",
-    "seed": "ts-node -r dotenv/config src/seeders/category.seeder.ts"
+    "seed": "ts-node -r dotenv/config src/seeders/category.seeder.ts",
+    "seed:prod": "node dist/seeders/category.seeder.js"
   },
   "keywords": [],
   "author": "",
